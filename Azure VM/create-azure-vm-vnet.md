@@ -17,7 +17,7 @@
 
 4. Setup Azure VM based on the application requirements.
    - Setup Docker for Azure VM
-   bash```
+   ```
     sudo apt update
     sudo apt-get install apt-transport-https ca-certificates curl software-properties-common
     curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
@@ -35,7 +35,7 @@
 
    - Setup Ngnix for Azure VM
 
-    bash```
+    ```
     sudo apt-get -y update
     sudo apt-get -y install nginx
     sudo systemctl status nginx
@@ -54,7 +54,7 @@
 
        * Install Certbot in VM
 
-       bash```
+       ```
         sudo apt-get install software-properties-common
         sudo add-apt-repository ppa:certbot/certbot
         sudo apt-get update
