@@ -9,10 +9,12 @@
    -
 
 3. Access to Azure VM using Public IP address and password
-   bash```
-   ssh username@ip-address
-   password: ****
+
    ```
+    ssh username@ip-address
+    Enter your password when prompted
+   ```
+
 4. Setup Azure VM based on the application requirements.
    - Setup Docker for Azure VM
    bash```
@@ -59,4 +61,3 @@
         sudo apt-get install python-certbot-nginx
         sudo certbot --nginx
        ```
-       
