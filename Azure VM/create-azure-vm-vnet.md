@@ -42,11 +42,12 @@
 
     ```
     - If you can't access it from browser right now because we haven't added port rule. To access the server we need to add PORT to Access Rule to our VM. In order to add rule for port, we need to add port in network settings of Azure VM in Add Inbound Port Rule 
-    bash ```
+    
+    ```
     Add Inbound Port Rule
+    ```
 
     You need to all expose port in which you want to run the application
-    ```
 
     - SSL Certificate using Certbot
 
