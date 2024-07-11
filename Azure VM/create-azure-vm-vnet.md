@@ -1,15 +1,10 @@
 # Create a Azure VM using Virtual Machine
 
 1. Select Virtual Machine and select options 
-   -
-   -
 
 2. Create Public IP address using Virtual Network
-   -
-   -
 
 3. Access to Azure VM using Public IP address and password
-
    ```
     ssh username@ip-address
     Enter your password when prompted
@@ -62,3 +57,55 @@
         sudo apt-get install python-certbot-nginx
         sudo certbot --nginx
        ```
+5. Install Necessary dependencies in the Azure VM if it requires to setup like local pc.
+
+6. Pull images from Azure Conatiner regustry to Azure VM
+
+7. Check docker images
+
+8. Run Docker images with the export port.
+
+9. To create a static URl, need to create DNS from AZUR which will provide certain url against the provided name.
+
+9. Add a ngnix.config file to build static url. It can be added within the frontend folder root file and the below code needs to be added:
+
+   ```
+         server {
+         listen 80;
+         server_name staticdomain.com;
+         return 301 https://$host$request_uri;
+         location / {
+            proxy_pass http://127.0.0.1:8026;
+            proxy_http_version 1.1;
+            proxy_set_header Upgrade $http_upgrade;
+            proxy_set_header Connection 'upgrade';
+            proxy_set_header Host $host;
+            proxy_cache_bypass $http_upgrade;
+         }
+      
+      }
+   ```
+
+10. To set https server with static url, we required ssl certificate and add the below code in ngnix.conf
+
+   ```
+     server {
+    listen 443 ssl;
+    server_name staticdomain.com;
+    ssl_certificate /etc/nginx/ssl/fullchain.pem;
+    ssl_certificate_key /etc/nginx/ssl/staticdomain.key;
+ 
+    ssl_protocols TLSv1.2 TLSv1.3;
+    ssl_ciphers HIGH:!aNULL:!MD5;
+
+    location / {
+        proxy_pass http://127.0.0.1:8080;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+         }
+      }
+
+   ```
